@@ -1,53 +1,21 @@
-from openai import OpenAI
-from pydub import AudioSegment
 import ollama
 import time
 import sys
 import argparse
+import whisper
 
 
 def create_transcription(audio_file):
-  client = OpenAI()
+  print("Creating transcription...")
   start_time = time.time()
-  recording = AudioSegment.from_mp3(audio_file)
-  #Add conversion to wav files here
-  audio_segments = []
-  start_point = 0
-
-
-  print("Segmenting audio...")
-  i = 1
-  while (True):
-      start_point = 24 * 60 * 1000 * (i - 1)
-      end_point = 24 * 60 * 1000 * i
-      
-
-      if start_point > len(recording):
-        break
-
-      segment = recording[start_point:end_point]
-
-      name = f"temp{i}.mp3"
-      segment.export(name, format="mp3")
-      audio_segments.append(name)
-      i += 1
-
-  print("Transcribing audio...")
+  model = whisper.load_model("small")
+  result = model.transcribe(audio_file)
   with open("transcription.txt", "w") as file:
-    for name in audio_segments:
-      audio_file = open(name, "rb")
-      transcription = client.audio.transcriptions.create(
-        model="whisper-1", 
-        file=audio_file, 
-        response_format="text"
-      )
-      audio_file.close()
-      file.write(transcription)
-      time.sleep(2)
-
-  #Add cleanup of temp files
+     file.write(result["text"])
   end_time = time.time()
   print(f"File transcribed in {(end_time - start_time):.2f} seconds")
+
+
 
 
 def create_notes(text):
