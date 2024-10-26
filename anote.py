@@ -4,6 +4,8 @@ import sys
 import argparse
 import whisper
 
+ollama_model = "llama3.2"
+
 
 def create_transcription(audio_file):
   print("Creating transcription...")
@@ -25,7 +27,7 @@ def create_notes(text):
 
 
   print("Creating notes...")
-  response = ollama.chat(model='llama3.2', messages=[
+  response = ollama.chat(model=ollama_model, messages=[
     {
       'role': 'user',
       'content': f"Creates bullet point notes for the following transcription of my lecture. The notes can be as long as needed to gather the all the info:\n {transcription}",
@@ -45,7 +47,7 @@ def main():
   # Create the parser
     parser = argparse.ArgumentParser(description="Process an MP3 file with options for transcription or note creation.")
     
-    # Add the positional argument for the option (either 't', 'c', or 'tc')
+    # Add the positional argument for the option (either 't', 'n', or 'tn')
     parser.add_argument("option", choices=['t', 'n', 'tn'], help="Choose 't' for transcription, 'n' for notes, or 'tn' for both.")
     
     # Add the positional argument for the file
