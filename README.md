@@ -1,3 +1,39 @@
 # Anote
 
-A simple python script which uses whisper to transcribe audio clips and llama3.2 to create notes for it.
+A simple python script which uses whisper and llama3.2 to help create notes.  
+
+
+
+## Installing Dependencies  
+To install dependencies you may want to create a virtual environment. This can be by running these commands in the root of the repo:  
+`python3 -m venv venv`  
+`source venv/bin/activate`  
+
+Then install the dependencies by running this command also in the root directory:  
+`pip3 install -r requirements.txt`
+
+## Running the Script  
+The script has three modes:
+   - `t` : Transcription only from an audio file
+   - `n` : Notes creation only from a text file
+   - `tn` : Both transcription and notes creation from an audio file  
+
+Here's how to use each mode:  
+
+To create only a transcription:  
+`python3 anote.py t audio_file.mp3`  
+The transcription will be saved in the root directory as transcription.txt  
+
+
+To create only notes:  
+`python3 anote.py n text_file.txt`  
+The notes will be saved in the root directory as notes.txt  
+
+
+To create both:  
+`python3 anote.py tn audio_file.mp3`  
+The transcription will be saved as transcription.txt and the notes as notes.txt. Both will be located in the root directory.  
+
+## Changing the model  
+I've found llama3.2 to be good for creating notes from the transcriptions considering it's size, but you may want to change the model. You can do this by changing the model name in the global variable at the top of the script. Check out the [List of models Ollama supports](https://ollama.com/library)
+
