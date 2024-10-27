@@ -26,19 +26,23 @@ And one option:
 
 Here's how to use each mode:
 
-To create only a transcription:  
+To create only a transcription from an audio file or youtube video:  
 `python3 anote.py t audio_file.mp3`  
+or  
+`python3 anote.py t "your_youtube_link" --youtube`  
 The transcription will be saved in the root directory as transcription.txt
 
-To create only notes:  
+To create only notes from a text file:  
 `python3 anote.py n text_file.txt`  
 The notes will be saved in the root directory as notes.txt
 
 To create both:  
 `python3 anote.py tn audio_file.mp3`  
+or  
+`python3 anote.py tn "your_youtube_link" --youtube`  
 The transcription will be saved as transcription.txt and the notes as notes.txt. Both will be located in the root directory.
 
-To use with a YouTube video, replace any of the above occurances of `audio_file.mp3` with `"your_youtube_link" --youtube`. Make sure to surround the link with quotes.
+For the YouTube links, make sure to surround the link with quotes.
 
 ## Changing the model
 
