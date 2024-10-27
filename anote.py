@@ -7,8 +7,10 @@ from pytubefix import YouTube
 from pytubefix.cli import on_progress
 import os
 
+
 ollama_model = "llama3.1"
 SAVE_PATH = "./"
+
 
 def download_youtube_video_as_mp3(url):
   
@@ -33,8 +35,6 @@ def create_transcription(audio_file):
      file.write(result["text"])
   end_time = time.time()
   print(f"File transcribed in {(end_time - start_time):.2f} seconds")
-
-
 
 
 def create_notes(text):
@@ -132,6 +132,7 @@ def main():
         sys.exit(1)
     end_time = time.time()
     print(f"Total time taken: {(end_time - start_time):.2f} seconds")
+
 
 if __name__ == "__main__":
    main()
