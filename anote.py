@@ -22,8 +22,8 @@ def download_youtube_video_as_mp3(url):
   print(f"Downloading '{yt.title}'...")
   ys = yt.streams.get_audio_only()
   file_name = ys.download(mp3=True)
-  file_name = os.rename(file_name, "downloaded")
-  return file_name
+  os.rename(file_name, "downloaded.mp3")
+  return "downloaded.mp3"
 
 
 def create_transcription(audio_file):
