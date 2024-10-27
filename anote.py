@@ -64,15 +64,15 @@ def create_notes(text):
         try:
             response = ollama.chat(model=ollama_model, messages=[
                 {
-                    'role': 'user',
-                    'content': f"Create bullet point notes for the following transcription of a video. Please make the notes as detailed as possible. Here is the transcription:\n {section_text}",
+                    "role": "user",
+                    "content": f"Create bullet point notes for the following transcription of a video. Please make the notes as detailed as possible. Here is the transcription:\n {section_text}",
                 },
             ])
             break  # Exit loop if attempt succeeds
         
 
         except ollama.ResponseError as e:
-            print('Error:', e.error)
+            print("Error:", e.error)
             if e.status_code == 404:
                 print(f"Model '{ollama_model}' not found. Pulling the model...")
                 ollama.pull(ollama_model)
@@ -101,8 +101,8 @@ def main():
   # Create the parser
     parser = argparse.ArgumentParser(description="Process an MP3 file or youtube link with options for transcription or note creation.")
     
-    # Add the positional argument for the option (either 't', 'n', or 'tn')
-    parser.add_argument("option", choices=['t', 'n', 'tn'], help="Choose 't' for transcription, 'n' for notes, or 'tn' for both.")
+    # Add the positional argument for the option (either "t", "n", or "tn")
+    parser.add_argument("option", choices=["t", "n", "tn"], help="Choose 't' for transcription, 'n' for notes, or 'tn' for both.")
     
     # Add the positional argument for the file
     parser.add_argument("file", type=str, help="The MP3 file or YouTube link to process.")
@@ -120,11 +120,11 @@ def main():
       audio_file = args.file
 
     # Execute based on the option
-    if args.option == 't':
+    if args.option == "t":
         create_transcription(audio_file)
-    elif args.option == 'n':
+    elif args.option == "n":
         create_notes(args.file)
-    elif args.option == 'tn':
+    elif args.option == "tn":
         create_transcription(audio_file)
         create_notes("transcription.txt")
     else:
