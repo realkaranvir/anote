@@ -19,7 +19,7 @@ def download_youtube_video_as_mp3(url):
   except:
      print("Error downloading youtube video")
 
-  print(f"Downloading '{yt.title}'...")
+  print(f"Downloading '{yt.title}'...\n")
   ys = yt.streams.get_audio_only()
   file_name = ys.download(mp3=True)
   os.rename(file_name, "downloaded.mp3")
@@ -51,8 +51,8 @@ def create_notes(text):
 
   words = transcription.split()
 
-  # Split the transcription into groups of 1000 words
-  transcript_sections = [words[i:i + 1000] for i in range(0, len(words), 1000)]
+  # Split the transcription into groups of 2000 words
+  transcript_sections = [words[i:i + 1500] for i in range(0, len(words), 1500)]
   
   for section in transcript_sections:
     max_retries = 3  # Set the maximum number of retries
