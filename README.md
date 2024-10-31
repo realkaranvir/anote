@@ -1,6 +1,9 @@
 # Anote
 
-A simple python script which uses whisper and llama to help create notes.
+A simple python script which uses whisper and llama to help create notes.  
+
+
+# Note: These instructions were written for MacOS, i'm currently making instructions for windows
 
 ## Installing Dependencies
 
