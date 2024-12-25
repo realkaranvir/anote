@@ -1,5 +1,6 @@
 pretrained_models/
 venv/
+vs/
 
 *.mp3
 *.txt
