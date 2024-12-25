@@ -8,7 +8,7 @@ from pytubefix.cli import on_progress
 import os
 
 
-ollama_model = "llama3.1"
+ollama_model = "llama3.678"
 SAVE_PATH = "./"
 
 
